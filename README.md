@@ -46,4 +46,4 @@ cargo tauri init
 
 
 # 问题
-在wsl环境下，项目文件如果放在windows目录下，每次启动需要重复编译，所以项目文件应该访问wsl ubuntu里面
+在wsl2 ubuntu环境下，项目文件如果放在windows目录下，每次启动需要重复编译,而且慢，所以项目文件应该访问wsl2 ubuntu里面
