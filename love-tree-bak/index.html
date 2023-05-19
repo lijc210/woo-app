@@ -3,7 +3,7 @@
 
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>❤妞妞❤爱你呦❤</title>
+		<title>❤梦里北极光❤爱你呦❤</title>
 		<link type="text/css" rel="stylesheet" href="./renxi/default.css">
 		<script type="text/javascript" src="./renxi/jquery.min.js"></script>
 		<script type="text/javascript" src="./renxi/jscex.min.js"></script>
@@ -16,16 +16,23 @@
 		<script type="text/javascript" src="./renxi/love.js" charset="utf-8"></script>
 		<style type="text/css"></style>
 		<script>
-			//document.getElementById("ai").innerHTML=str;
-			var all = document.getElementsByClassName("ai"); //返回的是数组
-			for (var i = 0; i < all.length; i++) {
-				all[i].innerHTML = str;
+			var str;
+			str = prompt("请输入你的名字,有惊喜！");
+			console.log(str);
+			window.onload = function() {
+				if (str != null && str !="") {
+					//document.getElementById("ai").innerHTML=str;
+					var all = document.getElementsByClassName("ai"); //返回的是数组
+					for (var i = 0; i < all.length; i++) {
+						all[i].innerHTML = str;
+					}
+				}
 			}
 		</script>
 	</head>
 
 	<body>
-		<audio autoplay="autopaly" loop="loop" id="vd">
+		<audio autoplay="autopaly" loop="loop">
 	<source src="renxi.mp3" type="audio/mp3" /></audio>
 		<div id="main">
 			<div id="error">本页面采用HTML5编辑，目前您的浏览器无法显示，请换成谷歌(<a href="http://www.google.cn/chrome/intl/zh-CN/landing_chrome.html?hl=zh-CN&brand=CHMI">Chrome</a>)或者火狐(<a href="http://firefox.com.cn/download/">Firefox</a>)浏览器，或者其他游览器的最新版本。</div>
@@ -33,53 +40,37 @@
 				<div id="text">
 					<div id="code">
 						<font color="black" size="4"><b><i>
-						<span class="say">在我们的世界里，昨日瞬间飞逝，明日遥不可及。</span><br>
+						<span class="say">不管你能否看的到，但是我还是要把这些心里话说出来！</span><br>
 						<span class="say"> </span><br>
-						<span class="say">妞妞，唯有此刻，我愿将我满怀的爱意倾诉于你！</span><br>
+						<span class="say"><span class="ai" >对的人 </span>，昨天太近，明天太远。选在今日，对你告白！</span><br>
 						<span class="say"> </span><br>
-						<span class="say">我对你的依赖，宛如鱼儿离不开大海，植物无法离开阳光。</span><br>
+						<span class="say"> 对你的依赖，如同鱼儿离不开海洋，如同植物离不开阳光。</span><br>
 						<span class="say"> </span><br>
-						<span class="say">请给予我机会，让我们的幸福人生书写得如诗如画。</span><br>
+						<span class="say">给我一次机会，写满我们的幸福人生。</span><br>
 						<span class="say"> </span><br>
-						<span class="say">当我睁开双眼，只有你存在于我的瞳孔之中！</span><br>
+						<span class="say">睁开我的眼睛，我的眼里只有你！</span><br>
 						<span class="say"> </span><br>
-						<span class="say">当我闭上双眼，我的心中只有你！</span><br>
+						<span class="say">闭上我的眼睛，我的眼里只有你！</span><br>
 						<span class="say"> </span><br>
-						<span class="say">无论眼前有何遮挡，我的目光只专注于你一人！</span><br>
+						<span class="say">带上眼镜，我的四个眼里只有你！</span><br>
 						<span class="say"> </span><br>
-						<span class="say">亲爱的，与我共赴未来，我不介意偷电动车养你！</span><br>
+						<span class="say"><span class="ai" >亲爱的 </span>，跟我走吧，我偷电动车养你！</span><br>
+						<span class="say"></span><br>
+						<span class="say">套路都是我学的，但爱你是真的！ </span><br>
 						<span class="say"> </span><br>
-						<span class="say">套路虽是我学来的，但对你的爱却是真实无疑！</span><br>
-						<span class="say"> </span><br>
-						<span class="say"> -- 爱你的哥哥--</span>
+						<span class="say"> -- 爱你的梦里北极光--</span>
 						</i></b>
 						</font>
 					</div>
 				</div>
 				<div id="clock-box">
-					<span><font color="#666666"><span class="ai" >亲爱的 </span>，我遇见你已经是</font></span>
+					<span><font color="#666666"><span class="ai" >亲爱的 </span>，我等你已经是</font></span>
 					<div id="clock"></div>
 				</div>
 				<canvas id="canvas" width="1100" height="680"></canvas>
 			</div>
 		</div>
-		<script type="text/javascript">
-			window.onload = function(){
-					 setInterval("toggleSound()",100);
-				}
-		
-			function toggleSound() {
-						var music = document.getElementById("vd");//获取ID  
-							
-						if (music.paused) { //判读是否播放  
-							music.paused=false;
-							music.play(); //没有就播放 
-						}    
-				}
-		</script>
-
 		<script>
-
 			(function() {
 				var canvas = $('#canvas');
 				if (!canvas[0].getContext) {
@@ -200,7 +191,7 @@
 				}));
 				var textAnimate = eval(Jscex.compile("async", function() {
 					var together = new Date();
-					together.setFullYear(2023, 1, 23);
+					together.setFullYear(2015, (9 - 1), (2 - 1));
 					together.setHours(9);
 					together.setMinutes(00);
 					together.setSeconds(0);
