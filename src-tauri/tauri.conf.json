@@ -7,7 +7,7 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "520快乐",
+    "productName": "520",
     "version": "0.0.0"
   },
   "tauri": {
