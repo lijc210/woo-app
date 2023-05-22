@@ -7,8 +7,8 @@
     "withGlobalTauri": false
   },
   "package": {
-    "productName": "520",
-    "version": "0.0.0"
+    "productName": "520-happy",
+    "version": "0.0.1"
   },
   "tauri": {
     "allowlist": {
@@ -27,11 +27,12 @@
         "icons/icon.icns",
         "icons/icon.ico"
       ],
-      "identifier": "com.lijicong.dev",
+      "identifier": "lijc210.github.io",
+      "publisher": "lijc210",
       "targets": "all",
       "windows": {
         "webviewInstallMode": {
-          "type": "offlineInstaller"
+          "type": "downloadBootstrapper"
         },
         "wix": {
           "language": "zh-CN"

@@ -27,6 +27,8 @@ rustup update
 cargo install create-tauri-app
 cargo create-tauri-app
 
+# 升级项目
+cargo update
 # 安装依赖
 nvm use v16.20.0
 pnpm install
@@ -47,3 +49,9 @@ cargo tauri init
 
 # 问题
 在wsl2 ubuntu环境下，项目文件如果放在windows目录下，每次启动需要重复编译,而且慢，所以项目文件应该访问wsl2 ubuntu里面
+
+#failed to bundle project: error running light.exe
+package.productName 不能纯数字
+
+# WebView2 Installation Options
+https://tauri.app/zh-cn/v1/guides/building/windows/
