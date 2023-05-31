@@ -39,7 +39,7 @@ pnpm tauri dev
 # 启动方式二
 cargo tauri dev
 
-# 打包
+# 打包（默认项目在mac下dmg包2.3M，二进制包5.7M
 pnpm tauri build
 
 # 创建src-tauri（不用执行，create-tauri-app会自动创建）
