@@ -55,3 +55,7 @@ package.productName 不能纯数字
 
 # WebView2 Installation Options
 https://tauri.app/zh-cn/v1/guides/building/windows/
+
+
+# 推送到github
+git remote add origin2 https://github.com/lijc210/woo-appp.git
