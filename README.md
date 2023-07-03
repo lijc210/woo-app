@@ -59,3 +59,4 @@ https://tauri.app/zh-cn/v1/guides/building/windows/
 
 # 推送到github
 git remote add origin2 https://github.com/lijc210/woo-app.git
+git push -u origin2 main
