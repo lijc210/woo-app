@@ -61,8 +61,14 @@ https://tauri.app/zh-cn/v1/guides/building/windows/
 git remote add origin2 https://github.com/lijc210/woo-app.git
 git push -u origin2 main
 
+# 发布release
+git checkout -b v0.0.1 main
+git push --set-upstream origin2 v0.0.1
+git branch --delete v0.0.1
+git checkout main
 
-# 创建一个分支
-git checkout -b release-0.0.1 main
-git branch --delete release-0.0.1
-
+# 推送tag
+git tag v0.0.1
+git ls-remote --tags origin2
+git push origin2 v0.0.1
+git push origin2 :refs/tags/v0.0.1
