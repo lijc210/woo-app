@@ -64,4 +64,5 @@ git push -u origin2 main
 
 # 创建一个分支
 git checkout -b release-0.0.1 main
+git branch --delete release-0.0.1
 
