@@ -22,12 +22,13 @@ async def get_jobs():
     """
     
     
+    
     return {"message": "Hello World"}
 
 @app.get("/updater")
 async def get_jobs():
     """
-    返回最新的包
+    返回tauri最新的包
     """
     
     return {"message": "Hello World"}
