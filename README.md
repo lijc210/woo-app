@@ -80,3 +80,7 @@ git push -u origin2 main
 * git tag -d v0.0.1
 # 删除远程tag
 * git push origin2 :refs/tags/v0.0.1
+
+
+# publish
+cd ~/woo-app && nohup python3 publish.py >~/publish.log 2>&1 &

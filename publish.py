@@ -7,6 +7,7 @@
 """
 import uvicorn
 from fastapi import FastAPI
+from utils import upload_cf
 app = FastAPI()
 
 
@@ -16,20 +17,13 @@ async def root():
 
 
 @app.get("/upload_cf")
-async def get_jobs():
-    """
-    打包完，调用此接口，上传到cloudflares
-    """
-    
-    
-    
+async def upload_cf():
+    upload_cf()
     return {"message": "Hello World"}
 
 @app.get("/updater")
-async def get_jobs():
-    """
-    返回tauri最新的包
-    """
+async def updater():
+
     
     return {"message": "Hello World"}
 
