@@ -69,7 +69,8 @@ git push -u origin2 main
 * git add . && git commit -m '0.0.1' && git push origin2           #推送分支
 * git checkout main                                                 #切回main分支
 
-
+# 列出远程分支
+* git branch -r
 # 删除分支
 * git branch -D 0.0.1
 # 删除远程分支
