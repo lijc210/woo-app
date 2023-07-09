@@ -63,15 +63,15 @@ git push -u origin2 main
 
 
 # 发布release
-* git checkout -b v0.0.1 main                                       #创建分支
+* git checkout -b 0.0.1 main                                       #创建分支
 * git tag v0.0.1                                                    #创建tag
 * git push origin2 --tags                                           #推送tag
-* git add . && git commit -m 'v0.0.2' && git push origin2           #推送分支
+* git add . && git commit -m '0.0.2' && git push origin2           #推送分支
 * git checkout main                                                 #切回main分支
 
 
 # 删除分支
-* git branch --delete v0.0.1
+* git branch --delete 0.0.1
 # 列出本地
 * git tag -l
 # 列出远程tag
