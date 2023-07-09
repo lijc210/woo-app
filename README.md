@@ -71,7 +71,7 @@ git push -u origin2 main
 
 
 # 删除分支
-* git branch --delete 0.0.1
+* git branch -D 0.0.1
 # 删除远程分支
 * git push origin --delete 0.0.1
 # 列出本地
