@@ -66,7 +66,7 @@ git push -u origin2 main
 * git checkout -b 0.0.1 main                                       #创建分支
 * git tag v0.0.1                                                    #创建tag
 * git push origin2 --tags                                           #推送tag
-* git add . && git commit -m '0.0.2' && git push origin2           #推送分支
+* git add . && git commit -m '0.0.1' && git push origin2           #推送分支
 * git checkout main                                                 #切回main分支
 
 
