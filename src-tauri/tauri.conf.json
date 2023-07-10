@@ -45,7 +45,6 @@
     "updater": {
       "active": true,
       "endpoints": [
-        "https://localhost:9000/woo-app/updater/{{target}}/{{current_version}}",
         "https://service-lz56v7k5-1258071508.sh.apigw.tencentcs.com/release/woo-app/updater/{{target}}/{{current_version}}"
       ],
       "dialog": true,

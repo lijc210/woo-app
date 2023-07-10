@@ -87,3 +87,7 @@ git push -u origin2 main
 
 # publish
 cd ~/woo-app && nohup python3 publish.py >~/publish.log 2>&1 &
+
+# 检查更新接口
+https://localhost:9000/woo-app/updater/windows/0.0.1
+https://service-lz56v7k5-1258071508.sh.apigw.tencentcs.com/release/woo-app/updater/windows/0.0.1
