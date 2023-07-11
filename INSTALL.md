@@ -70,7 +70,7 @@ git tag v0.0.1
 git push origin v0.0.1                                           
 
 # 推送分支
-git add . && git commit -m '0.0.1' && git push                  
+git add . && git commit -m '0.0.1' && git push origin 0.0.1                  
 
 # 切回main分支
 git checkout main                                                 

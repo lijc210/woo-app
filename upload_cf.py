@@ -29,7 +29,6 @@ def put_object(url, key, s3, BUCKET_NAME):
     logging.info("开始上传：" + url)
 
     headers = {
-        "Authorization": "Bearer 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",
         "Accept": "application/octet-stream",
         "X-GitHub-Api-Version": "2022-11-28",
     }
@@ -84,7 +83,6 @@ def upload_cf(ACCESS_KEY, SECRET_KEY):
     payload = {}
 
     headers = {
-        "Authorization": "Bearer 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",
         "Accept": "application/vnd.github.v3+json",
         "Content-Type": "application/json",
     }
