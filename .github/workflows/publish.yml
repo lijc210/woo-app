@@ -1,0 +1,65 @@
+name: "publish"
+on:
+  push:
+    branches:
+      - '0.*'
+
+jobs:
+  publish-tauri:
+    strategy:
+      fail-fast: false
+      matrix:
+        platform: [macos-latest, ubuntu-latest, windows-latest]
+
+    runs-on: ${{ matrix.platform }}
+    steps:
+    - uses: actions/checkout@v2
+    - name: setup node
+      uses: actions/setup-node@v1
+      with:
+        node-version: 16
+    - name: 安装 pnpm
+      uses: pnpm/action-setup@v2
+      with:
+        version: 7
+        run_install: true
+    - name: install Rust stable
+      uses: actions-rs/toolchain@v1
+      with:
+        toolchain: stable
+    - name: install dependencies (ubuntu only)
+      if: matrix.platform == 'ubuntu-latest'
+      run: |
+        sudo apt-get update
+        sudo apt-get install -y libgtk-3-dev webkit2gtk-4.0 libappindicator3-dev librsvg2-dev patchelf
+    - name: install app dependencies and build it
+      run: yarn && yarn build
+    - uses: tauri-apps/tauri-action@v0
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        TAURI_PRIVATE_KEY: ${{ secrets.TAURI_PRIVATE_KEY }}
+        TAURI_KEY_PASSWORD: ""
+      with:
+        tagName: v__VERSION__ # the action automatically replaces \_\_VERSION\_\_ with the app version
+        releaseName: "v__VERSION__"
+        releaseBody: "See the assets to download this version and install."
+        releaseDraft: false  # 不需要 draft 的可以改成 false
+        prerelease: false
+
+  publish-cloudflare:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.8
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.8
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install tqdm
+        pip install boto3==1.22.10
+        pip install requests==2.27.1
+    - name: 上传程序到cloudflare
+      run: |
+        python upload_cf.py ${{ secrets.CF_FILE_ACCESS_KEY }} ${{ secrets.CF_FILE_SECRET_KEY }}

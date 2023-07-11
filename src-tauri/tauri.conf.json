@@ -1,0 +1,63 @@
+{
+  "build": {
+    "beforeDevCommand": "pnpm dev",
+    "beforeBuildCommand": "pnpm build",
+    "devPath": "http://localhost:1420",
+    "distDir": "../dist",
+    "withGlobalTauri": false
+  },
+  "package": {
+    "productName": "wooapp",
+    "version": "0.0.2"
+  },
+  "tauri": {
+    "allowlist": {
+      "all": false,
+      "shell": {
+        "all": false,
+        "open": true
+      }
+    },
+    "bundle": {
+      "active": true,
+      "icon": [
+        "icons/32x32.png",
+        "icons/128x128.png",
+        "icons/128x128@2x.png",
+        "icons/icon.icns",
+        "icons/icon.ico"
+      ],
+      "identifier": "lijc210.github.io",
+      "publisher": "lijc210",
+      "targets": "all",
+      "windows": {
+        "webviewInstallMode": {
+          "type": "downloadBootstrapper"
+        },
+        "wix": {
+          "language": "zh-CN"
+        }
+      }
+    },
+    "security": {
+      "csp": null
+    },
+    "updater": {
+      "active": true,
+      "endpoints": [
+        "https://service-lz56v7k5-1258071508.sh.apigw.tencentcs.com/release/wooapp/updater/{{target}}/{{current_version}}"
+      ],
+      "dialog": true,
+      "pubkey": "dW50cnVzdGVkIGNvbW1lbnQ6IG1pbmlzaWduIHB1YmxpYyBrZXk6IEVFMzI4OURCQTJCOTJFNEIKUldSTExybWkyNGt5N2xGRzhXUmllNm9MQ1U3aXh2SU1yL2RFVHF6N243VGRkWFU3WjZlVVdRRlIK"
+    },
+    "windows": [
+      {
+        "fullscreen": false,
+        "resizable": true,
+        "title": "❤妞妞❤爱你呦❤",
+        "width": 1200,
+        "height": 800
+      }
+    ]
+  }
+}
