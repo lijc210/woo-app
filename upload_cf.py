@@ -118,7 +118,7 @@ def upload_cf(ACCESS_KEY, SECRET_KEY):
     s3.put_object(
         Body=json.dumps(data_dict, ensure_ascii=False),
         Bucket=BUCKET_NAME,
-        Key="woo_app.json",
+        Key="wooapp.json",
     )
     return True
 
