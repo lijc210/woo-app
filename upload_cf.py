@@ -11,8 +11,7 @@ import json
 import requests
 import logging
 from tqdm import tqdm
-
-
+from collections import defaultdict
 
 
 # 日志输出
@@ -56,6 +55,23 @@ def put_object(url, key, s3, BUCKET_NAME):
         logging.error(str(response.status_code) + "\t" + response.text)
 
 
+def get_signature(url):
+    headers = {
+        "Accept": "application/octet-stream",
+        "X-GitHub-Api-Version": "2022-11-28",
+    }
+
+    response = requests.get(url, headers=headers, stream=True)
+    # print(response.text)
+
+    signature = ""
+    if response.status_code == 200:
+        signature = response.content.decode()
+    else:
+        logging.error(str(response.status_code) + "\t" + response.text)
+    return signature
+
+
 def upload_cf(ACCESS_KEY, SECRET_KEY):
     """
     打包完，调用此接口，上传到cloudflares
@@ -66,7 +82,7 @@ def upload_cf(ACCESS_KEY, SECRET_KEY):
         "BUCKET_NAME": "file",
         "ENDPOINT_URL": "https://ea2399efdad8c26cba1f231fdeec938b.r2.cloudflarestorage.com",
     }
-    
+
     BUCKET_NAME = S3_FILE_CONF["BUCKET_NAME"]
 
     # 连接s3
@@ -76,8 +92,7 @@ def upload_cf(ACCESS_KEY, SECRET_KEY):
         aws_secret_access_key=S3_FILE_CONF["SECRET_KEY"],
         endpoint_url=S3_FILE_CONF["ENDPOINT_URL"],
     )
-    
-    
+
     url = "https://api.github.com/repos/lijc210/wooapp/releases/latest"
 
     payload = {}
@@ -95,24 +110,38 @@ def upload_cf(ACCESS_KEY, SECRET_KEY):
     tag_name = res_dict["tag_name"]
     assets = res_dict["assets"]
     published_at = res_dict["published_at"]
-    asset_dict = {}
+    asset_dict = defaultdict(dict)
     for adict in assets:
         name = adict["name"]
-        browser_download_url = adict["url"]
-        if name.endswith("_x64_zh-CN.msi"):
-            asset_dict["windows"] = browser_download_url
-            put_object(browser_download_url, name, s3, BUCKET_NAME)
-        elif name.endswith("_x64.dmg"):
-            asset_dict["darwin"] = browser_download_url
-            put_object(browser_download_url, name, s3, BUCKET_NAME)
-        elif name.endswith("_amd64.deb"):
-            asset_dict["linux"] = browser_download_url
-            put_object(browser_download_url, name, s3, BUCKET_NAME)
+        url = adict["url"]
+        # signature
+        if name.endswith("_x64_zh-CN.msi.zip.sig"):
+            signature = get_signature(url)
+            asset_dict["windows"]["signature"] = signature
+        elif name.endswith("_x64.app.tar.gz.sig"):
+            signature = get_signature(url)
+            asset_dict["darwin"]["signature"] = signature
+        elif name.endswith("_amd64.AppImage.tar.gz.sig"):
+            signature = get_signature(url)
+            asset_dict["linux"]["signature"] = signature
+        # url
+        if name.endswith("_x64_zh-CN.msi.zip"):
+            asset_dict["windows"]["url"] = f"https://file.cizai.io/{name}"
+            put_object(url, name, s3, BUCKET_NAME)
+        elif name.endswith("_x64.app.tar.gz"):
+            asset_dict["darwin"]["url"] = f"https://file.cizai.io/{name}"
+            put_object(url, name, s3, BUCKET_NAME)
+        elif name.endswith("_amd64.AppImage.tar.gz"):
+            asset_dict["linux"]["url"] = f"https://file.cizai.io/{name}"
+            put_object(url, name, s3, BUCKET_NAME)
+
     data_dict = {}
     data_dict["body"] = body
     data_dict["tag_name"] = tag_name
     data_dict["published_at"] = published_at
-    data_dict["assets"] = asset_dict
+    data_dict["assets"] = dict(asset_dict)
+
+    # print(data_dict)
 
     # 版本上传到cloudflares
     s3.put_object(
@@ -130,4 +159,3 @@ if __name__ == "__main__":
         ACCESS_KEY = sys.argv[1]
         SECRET_KEY = sys.argv[2]
         upload_cf(ACCESS_KEY, SECRET_KEY)
-    
