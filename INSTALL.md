@@ -50,14 +50,17 @@ cargo install tauri-cli
 cargo tauri init
 
 # TAURI_PRIVATE_KEY添加到环境变量
-echo "export TAURI_PRIVATE_KEY=`cat ~/.config/wooapp.key`" >> ~/.zshrc
-echo "export TAURI_KEY_PASSWORD=''" >> ~/.zshrc
+* echo "export TAURI_PRIVATE_KEY=`cat ~/.config/wooapp.key`" >> ~/.zshrc
+* echo "export TAURI_KEY_PASSWORD=''" >> ~/.zshrc
+
+* $env:TAURI_PRIVATE_KEY="content of the generated key"
+* $env:TAURI_KEY_PASSWORD="password"
 
 # 问题
-在wsl2 ubuntu环境下，项目文件如果放在windows目录下，每次启动需要重复编译,而且慢，所以项目文件应该访问wsl2 ubuntu里面
+* 在wsl2 ubuntu环境下，项目文件如果放在windows目录下，每次启动需要重复编译,而且慢，所以项目文件应该访问wsl2 ubuntu里面
 
-#failed to bundle project: error running light.exe
-package.productName 不能纯数字
+* #failed to bundle project: error running light.exe
+* package.productName 不能纯数字
 
 # WebView2 Installation Options
 https://tauri.app/zh-cn/v1/guides/building/windows/
