@@ -46,6 +46,9 @@ pnpm tauri build
 cargo install tauri-cli
 cargo tauri init
 
+# TAURI_PRIVATE_KEY添加到环境变量
+echo "export TAURI_PRIVATE_KEY=`cat ~/.config/wooapp.key`" >> ~/.zshrc
+echo "export TAURI_KEY_PASSWORD=''" >> ~/.zshrc
 
 # 问题
 在wsl2 ubuntu环境下，项目文件如果放在windows目录下，每次启动需要重复编译,而且慢，所以项目文件应该访问wsl2 ubuntu里面
