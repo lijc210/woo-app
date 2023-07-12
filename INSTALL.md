@@ -42,6 +42,9 @@ cargo tauri dev
 # 打包（默认项目dmg包与msi包2M多，二进制包5M多）
 pnpm tauri build
 
+# 修改应用图标./app-icon.png（无背景）
+pnpm tauri icon
+
 # 创建src-tauri（不用执行，create-tauri-app会自动创建）
 cargo install tauri-cli
 cargo tauri init
