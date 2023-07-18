@@ -31,6 +31,7 @@ cargo create-tauri-app
 cargo update
 # 安装依赖
 nvm use v16.20.0
+npm install pnpm@7
 pnpm install
 
 # 启动方式一
